@@ -40,3 +40,4 @@ class User(Base):
     avatar = Column(String(255), nullable=True)
     refresh_token = Column(String(255), nullable=True)
     roles = Column('role', Enum(Role), default=Role.user)
+    confirmed = Column(Boolean, default=False)
