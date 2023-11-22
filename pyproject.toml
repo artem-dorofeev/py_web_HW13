@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "py-web-hw12"
+version = "0.1.0"
+description = "HW 12 python web"
+authors = ["Artem Dorofeev <130536391+artem-dorofeev@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-jose = "^3.3.0"
+sqlalchemy = "^2.0.23"
+alembic = "^1.12.1"
+psycopg2 = "^2.9.9"
+uvicorn = "^0.24.0.post1"
+pydantic = "^2.5.1"
+fastapi = "^0.104.1"
+jinja2 = "^3.1.2"
+faker = "^20.0.3"
+libgravatar = "^1.0.4"
+passlib = "^1.7.4"
+python-multipart = "^0.0.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
