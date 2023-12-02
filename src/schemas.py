@@ -15,6 +15,7 @@ class ContactModel(BaseModel):
 
 
 class ContactResponse(BaseModel):
+    # model_config = SettingsConfigDict(from_attributes=True)
     id: int = 1
     firstname: str
     lastname: str
@@ -28,6 +29,7 @@ class ContactResponse(BaseModel):
     class Config:
         #orm_mode = True
         from_attributes = True
+        
 
 
 class UserModel(BaseModel):

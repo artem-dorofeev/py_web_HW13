@@ -1,14 +1,21 @@
 import time
+import redis.asyncio as redis
+import uvicorn
+
 from fastapi import FastAPI, Depends, HTTPException, Request, status
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from fastapi_limiter import FastAPILimiter
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 
 
 from src.database.db import get_db
 from src.routes import contacts, auth
+
+
+# from src.conf.config import settings
 
 app = FastAPI()
 
@@ -44,8 +51,22 @@ def healthchecker(db: Session = Depends(get_db)):
         print(e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                             detail="Error connecting to the database")
+    
+
+# @app.on_event("startup")
+# async def startup():
+#     r = await redis.Redis(host=settings.redis_host, port=settings.redis_port, db=0, encoding="utf-8",
+#                           decode_responses=True)
+#     await FastAPILimiter.init(r)
+
+# @app.get("/")
+# def read_root():
+#     return {"message": "Hello World"}
 
 
 app.include_router(contacts.router, prefix='/api')
 app.include_router(auth.router, prefix='/api')
+# app.include_router(users.router, prefix='/api')
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", reload=True)

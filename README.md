@@ -1,5 +1,8 @@
 # py_web_HW13
 
+# запуск сервера - uvicorn НАЗВА ФАЙЛА:арр
+# uvicorn main:app --reload
+
 poetry add sqlalchemy alembic psycopg2 uvicorn pydantic fastapi jinja2 faker libgravatar python-jose passlib python-multipart
 
 1. in models.py add class User(Base)
@@ -19,4 +22,5 @@ poetry add sqlalchemy alembic psycopg2 uvicorn pydantic fastapi jinja2 faker lib
 
     alembic upgrade heads
 
-6.
+6. poetry add python-dotenv
+
